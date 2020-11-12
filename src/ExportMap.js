@@ -241,7 +241,6 @@ function captureDoc(source, docStyleParsers, ...nodes) {
 
 const availableDocStyleParsers = {
   jsdoc: captureJsDoc,
-  tomdoc: captureTomDoc,
 };
 
 /**
@@ -264,35 +263,6 @@ function captureJsDoc(comments) {
   });
 
   return doc;
-}
-
-/**
- * parse TomDoc section from comments
- */
-function captureTomDoc(comments) {
-  // collect lines up to first paragraph break
-  const lines = [];
-  for (let i = 0; i < comments.length; i++) {
-    const comment = comments[i];
-    if (comment.value.match(/^\s*$/)) break;
-    lines.push(comment.value.trim());
-  }
-
-  // return doctrine-like object
-  const statusMatch = lines
-    .join(" ")
-    .match(/^(Public|Internal|Deprecated):\s*(.+)/);
-  if (statusMatch) {
-    return {
-      description: statusMatch[2],
-      tags: [
-        {
-          title: statusMatch[1].toLowerCase(),
-          description: statusMatch[2],
-        },
-      ],
-    };
-  }
 }
 
 ExportMap.get = function (source, context) {

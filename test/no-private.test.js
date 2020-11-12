@@ -14,20 +14,6 @@ ruleTester.run("no-private", rule, {
     test({ code: "import { fine } from './deprecated'" }),
     test({ code: "import { _undocumented } from './deprecated'" }),
 
-    // test({
-    //   code: "import { fn } from './deprecated'",
-    //   settings: { "import/docstyle": ["tomdoc"] },
-    // }),
-    //
-    // test({
-    //   code: "import { fine } from './tomdoc-deprecated'",
-    //   settings: { "import/docstyle": ["tomdoc"] },
-    // }),
-    // test({
-    //   code: "import { _undocumented } from './tomdoc-deprecated'",
-    //   settings: { "import/docstyle": ["tomdoc"] },
-    // }),
-
     // naked namespace is fine
     test({ code: "import * as depd from './deprecated'" }),
     test({
@@ -65,30 +51,6 @@ ruleTester.run("no-private", rule, {
       code: "import { MY_TERRIBLE_ACTION } from './deprecated'",
       errors: ["Private: please stop sending/handling this action type."],
     }),
-
-    // test({
-    //   code: "import { fn } from './deprecated'",
-    //   settings: { "import/docstyle": ["jsdoc", "tomdoc"] },
-    //   errors: ["Private: please use 'x' instead."],
-    // }),
-    //
-    // test({
-    //   code: "import { fn } from './tomdoc-deprecated'",
-    //   settings: { "import/docstyle": ["tomdoc"] },
-    //   errors: ["Private: This function is terrible."],
-    // }),
-    //
-    // test({
-    //   code: "import TerribleClass from './tomdoc-deprecated'",
-    //   settings: { "import/docstyle": ["tomdoc"] },
-    //   errors: ["Private: this is awful, use NotAsBadClass."],
-    // }),
-    //
-    // test({
-    //   code: "import { MY_TERRIBLE_ACTION } from './tomdoc-deprecated'",
-    //   settings: { "import/docstyle": ["tomdoc"] },
-    //   errors: ["Private: Please stop sending/handling this action type."],
-    // }),
 
     // ignore redeclares
     test({
