@@ -17,7 +17,7 @@ const includes = require("array-includes");
 
 let parseConfigFileTextToJson;
 
-const log = console.debug;
+const log = () => {};
 
 const exportCache = new Map();
 
@@ -367,8 +367,7 @@ ExportMap.parse = function (path, content, context) {
 
   if (!unambiguous.isModule(ast)) return null;
 
-  const docstyle = (context.settings &&
-    context.settings["import/docstyle"]) || ["jsdoc"];
+  const docstyle = ["jsdoc"];
   const docStyleParsers = {};
   docstyle.forEach((style) => {
     docStyleParsers[style] = availableDocStyleParsers[style];

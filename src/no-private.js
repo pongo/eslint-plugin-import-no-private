@@ -2,7 +2,6 @@
 
 const declaredScope = require("eslint-module-utils/declaredScope").default;
 const { Exports } = require("./ExportMap");
-// import docsUrl from "../docsUrl";
 
 function message(deprecation) {
   return (
