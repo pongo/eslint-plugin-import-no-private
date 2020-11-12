@@ -4,9 +4,9 @@ const declaredScope = require("eslint-module-utils/declaredScope").default;
 const { Exports } = require("./ExportMap");
 
 function message(deprecation) {
-  return (
-    "Private" + (deprecation.description ? ": " + deprecation.description : ".")
-  );
+  return deprecation.description
+    ? "Private: " + deprecation.description
+    : "Private imports disallowed.";
 }
 
 function getDeprecation(metadata) {
