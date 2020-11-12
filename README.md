@@ -6,11 +6,7 @@ tag.
 ```js
 // @file: ./answer.js
 
-/**
- * this is what you get when you trust a mouse talk show
- * @private need to restart the experiment
- * @returns {Number} nonsense
- */
+/** @private */
 export function multiply(six, nine) {
   return 42
 }
@@ -19,10 +15,10 @@ export function multiply(six, nine) {
 will report as such:
 
 ```js
-import { multiply } from './answer' // Private: need to restart the experiment
+import { multiply } from './answer' // Private imports disallowed.
 
 function whatever(y, z) {
-  return multiply(y, z) // Private: need to restart the experiment
+  return multiply(y, z) // Private imports disallowed.
 }
 ```
 
