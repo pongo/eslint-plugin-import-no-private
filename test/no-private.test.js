@@ -14,19 +14,19 @@ ruleTester.run("no-private", rule, {
     test({ code: "import { fine } from './deprecated'" }),
     test({ code: "import { _undocumented } from './deprecated'" }),
 
-    test({
-      code: "import { fn } from './deprecated'",
-      settings: { "import/docstyle": ["tomdoc"] },
-    }),
-
-    test({
-      code: "import { fine } from './tomdoc-deprecated'",
-      settings: { "import/docstyle": ["tomdoc"] },
-    }),
-    test({
-      code: "import { _undocumented } from './tomdoc-deprecated'",
-      settings: { "import/docstyle": ["tomdoc"] },
-    }),
+    // test({
+    //   code: "import { fn } from './deprecated'",
+    //   settings: { "import/docstyle": ["tomdoc"] },
+    // }),
+    //
+    // test({
+    //   code: "import { fine } from './tomdoc-deprecated'",
+    //   settings: { "import/docstyle": ["tomdoc"] },
+    // }),
+    // test({
+    //   code: "import { _undocumented } from './tomdoc-deprecated'",
+    //   settings: { "import/docstyle": ["tomdoc"] },
+    // }),
 
     // naked namespace is fine
     test({ code: "import * as depd from './deprecated'" }),
@@ -53,55 +53,55 @@ ruleTester.run("no-private", rule, {
 
     test({
       code: "import { fn } from './deprecated'",
-      errors: ["Deprecated: please use 'x' instead."],
+      errors: ["Private: please use 'x' instead."],
     }),
 
     test({
       code: "import TerribleClass from './deprecated'",
-      errors: ["Deprecated: this is awful, use NotAsBadClass."],
+      errors: ["Private: this is awful, use NotAsBadClass."],
     }),
 
     test({
       code: "import { MY_TERRIBLE_ACTION } from './deprecated'",
-      errors: ["Deprecated: please stop sending/handling this action type."],
+      errors: ["Private: please stop sending/handling this action type."],
     }),
 
-    test({
-      code: "import { fn } from './deprecated'",
-      settings: { "import/docstyle": ["jsdoc", "tomdoc"] },
-      errors: ["Deprecated: please use 'x' instead."],
-    }),
-
-    test({
-      code: "import { fn } from './tomdoc-deprecated'",
-      settings: { "import/docstyle": ["tomdoc"] },
-      errors: ["Deprecated: This function is terrible."],
-    }),
-
-    test({
-      code: "import TerribleClass from './tomdoc-deprecated'",
-      settings: { "import/docstyle": ["tomdoc"] },
-      errors: ["Deprecated: this is awful, use NotAsBadClass."],
-    }),
-
-    test({
-      code: "import { MY_TERRIBLE_ACTION } from './tomdoc-deprecated'",
-      settings: { "import/docstyle": ["tomdoc"] },
-      errors: ["Deprecated: Please stop sending/handling this action type."],
-    }),
+    // test({
+    //   code: "import { fn } from './deprecated'",
+    //   settings: { "import/docstyle": ["jsdoc", "tomdoc"] },
+    //   errors: ["Private: please use 'x' instead."],
+    // }),
+    //
+    // test({
+    //   code: "import { fn } from './tomdoc-deprecated'",
+    //   settings: { "import/docstyle": ["tomdoc"] },
+    //   errors: ["Private: This function is terrible."],
+    // }),
+    //
+    // test({
+    //   code: "import TerribleClass from './tomdoc-deprecated'",
+    //   settings: { "import/docstyle": ["tomdoc"] },
+    //   errors: ["Private: this is awful, use NotAsBadClass."],
+    // }),
+    //
+    // test({
+    //   code: "import { MY_TERRIBLE_ACTION } from './tomdoc-deprecated'",
+    //   settings: { "import/docstyle": ["tomdoc"] },
+    //   errors: ["Private: Please stop sending/handling this action type."],
+    // }),
 
     // ignore redeclares
     test({
       code:
         "import { MY_TERRIBLE_ACTION } from './deprecated'; function shadow(MY_TERRIBLE_ACTION) { console.log(MY_TERRIBLE_ACTION); }",
-      errors: ["Deprecated: please stop sending/handling this action type."],
+      errors: ["Private: please stop sending/handling this action type."],
     }),
 
     // ignore non-deprecateds
     test({
       code:
         "import { MY_TERRIBLE_ACTION, fine } from './deprecated'; console.log(fine)",
-      errors: ["Deprecated: please stop sending/handling this action type."],
+      errors: ["Private: please stop sending/handling this action type."],
     }),
 
     // reflag on subsequent usages
@@ -111,11 +111,11 @@ ruleTester.run("no-private", rule, {
       errors: [
         {
           type: "ImportSpecifier",
-          message: "Deprecated: please stop sending/handling this action type.",
+          message: "Private: please stop sending/handling this action type.",
         },
         {
           type: "Identifier",
-          message: "Deprecated: please stop sending/handling this action type.",
+          message: "Private: please stop sending/handling this action type.",
         },
       ],
     }),
@@ -127,7 +127,7 @@ ruleTester.run("no-private", rule, {
       errors: [
         {
           type: "ImportSpecifier",
-          message: "Deprecated: please stop sending/handling this action type.",
+          message: "Private: please stop sending/handling this action type.",
         },
       ],
     }),
@@ -139,11 +139,11 @@ ruleTester.run("no-private", rule, {
       errors: [
         {
           type: "ImportSpecifier",
-          message: "Deprecated: please stop sending/handling this action type.",
+          message: "Private: please stop sending/handling this action type.",
         },
         {
           type: "Identifier",
-          message: "Deprecated: please stop sending/handling this action type.",
+          message: "Private: please stop sending/handling this action type.",
         },
       ],
     }),
@@ -155,11 +155,11 @@ ruleTester.run("no-private", rule, {
       errors: [
         {
           type: "ImportSpecifier",
-          message: "Deprecated: please stop sending/handling this action type.",
+          message: "Private: please stop sending/handling this action type.",
         },
         {
           type: "Identifier",
-          message: "Deprecated: please stop sending/handling this action type.",
+          message: "Private: please stop sending/handling this action type.",
         },
       ],
     }),
@@ -170,7 +170,7 @@ ruleTester.run("no-private", rule, {
       errors: [
         {
           type: "ImportDeclaration",
-          message: "Deprecated: this module is the worst.",
+          message: "Private: this module is the worst.",
         },
       ],
     }),
@@ -181,7 +181,7 @@ ruleTester.run("no-private", rule, {
       errors: [
         {
           type: "ImportDeclaration",
-          message: "Deprecated: this module is the worst.",
+          message: "Private: this module is the worst.",
         },
       ],
     }),
@@ -193,7 +193,7 @@ ruleTester.run("no-private", rule, {
       errors: [
         {
           type: "Identifier",
-          message: "Deprecated: please stop sending/handling this action type.",
+          message: "Private: please stop sending/handling this action type.",
         },
       ],
     }),
@@ -203,7 +203,7 @@ ruleTester.run("no-private", rule, {
       errors: [
         {
           type: "Identifier",
-          message: "Deprecated: please stop sending/handling this action type.",
+          message: "Private: please stop sending/handling this action type.",
         },
       ],
     }),
@@ -213,7 +213,7 @@ ruleTester.run("no-private", rule, {
       errors: [
         {
           type: "Identifier",
-          message: "Deprecated: please stop sending/handling this action type.",
+          message: "Private: please stop sending/handling this action type.",
         },
       ],
     }),
@@ -223,14 +223,14 @@ ruleTester.run("no-private", rule, {
       errors: [
         {
           type: "Identifier",
-          message: "Deprecated: please stop sending/handling this action type.",
+          message: "Private: please stop sending/handling this action type.",
         },
       ],
     }),
   ],
 });
 
-ruleTester.run("no-deprecated: hoisting", rule, {
+ruleTester.run("no-Private: hoisting", rule, {
   valid: [
     test({
       code:
@@ -245,11 +245,11 @@ ruleTester.run("no-deprecated: hoisting", rule, {
       errors: [
         {
           type: "Identifier",
-          message: "Deprecated: please stop sending/handling this action type.",
+          message: "Private: please stop sending/handling this action type.",
         },
         {
           type: "ImportSpecifier",
-          message: "Deprecated: please stop sending/handling this action type.",
+          message: "Private: please stop sending/handling this action type.",
         },
       ],
     }),
@@ -286,9 +286,9 @@ describe("TypeScript", function () {
               errors: [
                 {
                   type: "ImportSpecifier",
-                  message: "Deprecated: don't use this!",
+                  message: "Private: don't use this!",
                 },
-                { type: "Identifier", message: "Deprecated: don't use this!" },
+                { type: "Identifier", message: "Private: don't use this!" },
               ],
             },
             parserConfig

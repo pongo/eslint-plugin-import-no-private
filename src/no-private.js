@@ -6,8 +6,7 @@ const { Exports } = require("./ExportMap");
 
 function message(deprecation) {
   return (
-    "Deprecated" +
-    (deprecation.description ? ": " + deprecation.description : ".")
+    "Private" + (deprecation.description ? ": " + deprecation.description : ".")
   );
 }
 
@@ -16,7 +15,7 @@ function getDeprecation(metadata) {
 
   let deprecation;
   if (
-    metadata.doc.tags.some((t) => t.title === "deprecated" && (deprecation = t))
+    metadata.doc.tags.some((t) => t.title === "private" && (deprecation = t))
   ) {
     return deprecation;
   }
@@ -47,7 +46,7 @@ module.exports = {
       if (
         imports.doc &&
         imports.doc.tags.some(
-          (t) => t.title === "deprecated" && (moduleDeprecation = t)
+          (t) => t.title === "private" && (moduleDeprecation = t)
         )
       ) {
         context.report({ node, message: message(moduleDeprecation) });

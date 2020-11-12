@@ -1,7 +1,7 @@
 /**
  * ugh!
  * @module some/deprecated
- * @deprecated this module is the worst.
+ * @private this module is the worst.
  */
 
 /**

@@ -1,7 +1,7 @@
 // some line comment
 /**
  * this function is terrible
- * @deprecated please use 'x' instead.
+ * @private please use 'x' instead.
  * @return null
  */
 // another line comment
@@ -12,29 +12,29 @@ export function fn() {
 
 /**
  * so terrible
- * @deprecated this is awful, use NotAsBadClass.
+ * @private this is awful, use NotAsBadClass.
  */
 export default class TerribleClass {}
 
 /**
  * some flux action type maybe
- * @deprecated please stop sending/handling this action type.
+ * @private please stop sending/handling this action type.
  * @type {String}
  */
 export const MY_TERRIBLE_ACTION = "ugh";
 
 /**
- * @deprecated this chain is awful
+ * @private this chain is awful
  * @type {String}
  */
 export const CHAIN_A = "a",
   /**
-   * @deprecated so awful
+   * @private so awful
    * @type {String}
    */
   CHAIN_B = "b",
   /**
-   * @deprecated still terrible
+   * @private still terrible
    * @type {String}
    */
   CHAIN_C = "C";
