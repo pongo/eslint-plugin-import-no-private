@@ -1,7 +1,6 @@
 # eslint-plugin-import-no-private
 
-Reports use of a deprecated name, as indicated by a JSDoc block with a `@private`
-tag.
+Disallow private imports, indicated by a JSDoc block with a `@private` tag.
 
 ```js
 // answer.js
@@ -45,6 +44,21 @@ Then configure the rules:
     "rules": {
         "import-no-private/no-private": "error"
     }
+}
+```
+
+Also, you can disable this rule for test files:
+
+```json
+{
+    "overrides": [
+        {
+            "files": ["*.test.js", "./test/**/*.js"],
+            "rules": {
+              "import-no-private/no-private": 0
+            }
+        }
+    ]
 }
 ```
 
