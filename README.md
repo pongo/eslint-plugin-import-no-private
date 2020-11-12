@@ -4,7 +4,7 @@ Reports use of a deprecated name, as indicated by a JSDoc block with a `@private
 tag.
 
 ```js
-// @file: ./answer.js
+// answer.js
 
 /** @private */
 export function multiply(six, nine) {
@@ -70,4 +70,4 @@ Then configure the eslint settings:
 
 ## Notes
 
-This rule is a copy of [import/no-deprecated](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-deprecated.md) rule.
+This rule is a copy-paste of [import/no-deprecated](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-deprecated.md) rule.
